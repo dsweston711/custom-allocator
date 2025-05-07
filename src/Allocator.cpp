@@ -2,20 +2,22 @@
 #include <iostream>
 #include <cstdlib> // malloc, free
 
+using namespace std;
+
 Allocator::Allocator(std::size_t size)
 {
     memorySize = size;
     memoryStart = std::malloc(size);
     if (!memoryStart)
     {
-        std::cerr << "Failed to allocate initial memory pool.\n";
-        std::exit(1);
+        cerr << "Failed to allocate initial memory pool.\n";
+        exit(1);
     }
 }
 
 Allocator::~Allocator()
 {
-    std::free(memoryStart);
+    free(memoryStart);
 }
 
 void *Allocator::allocate(std::size_t size)

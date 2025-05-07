@@ -3,18 +3,20 @@
 
 #include <cstddef>
 
+using namespace std;
+
 class Allocator
 {
 public:
-    Allocator(std::size_t size);
+    Allocator(size_t size);
     ~Allocator();
 
-    void *allocate(std::size_t size);
+    void *allocate(size_t size);
     void deallocate(void *ptr);
 
 private:
     void *memoryStart;
-    std::size_t memorySize;
+    size_t memorySize;
 
     // TODO: add metadata structures
 };
