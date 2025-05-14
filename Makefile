@@ -3,9 +3,9 @@ CXX      = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Source and object files
-SRCS  := $(wildcard *.cpp)
+SRCS  := $(wildcard src/*.cpp)
 OBJS  := $(SRCS:.cpp=.o)
-TARGET = inversion_counting
+TARGET = stack_allocator_test
 
 # Default rule
 all: $(TARGET)
@@ -22,10 +22,8 @@ $(TARGET): $(OBJS)
 run: $(TARGET)
 	./$(TARGET)
 
-# Clean build artifacts
+# this took too long to figure out and just went with a simple rule instead
 clean:
-	@echo "Cleaning up..."
-	@if [ -f $(TARGET) ]; then rm -f $(TARGET); fi
-	@rm -f $(OBJS)
-
-.PHONY: all clean run
+	@echo Cleaning up...
+	-@del /Q src\*.o >nul 2>&1
+	-@del /Q *.exe >nul 2>&1
